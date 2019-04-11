@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>我们相爱的日子</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background:#fff url(img/lover.JPG) no-repeat left top;
+  			background-size:100% 1300PX;
+            font-size: 105%;
+            font-family:宋体;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+			text-shadow: 5px 5px 5px black, 0px 0px 2px red, 4px 4px 3px green;
+			color: white;
+        }
+        
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 200%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(253, 99, 125);
+            font-weight: bold;
+        }
+        .timer span{
+        	font-weight: bolder;
+        	text-shadow: 5px 5px 5px black, 0px 0px 2px red, 2px 2px 3px green;
+        	color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2 id="title">我们已经在一起</h2>
+        <div class="timer">
+            <b id="d"></b> <span>Days</span> <b id="h"></b> <span>Hours</span> <b id="m"></b> <span>Minutes</span> <b id="s"></b> <span>Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+            var start = new Date(2014, 4, 13); 
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
